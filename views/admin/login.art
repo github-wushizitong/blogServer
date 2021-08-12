@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/admin/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">黑马程序员 - 博客管理员登录{{text}}</h4>
+            <div class="login">
+                <form action="/admin/login" method="POST" id='form'>
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input name="email" type="email" class="form-control" placeholder="请输入邮件地址">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input name="password" type="password" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+    <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入静态资源文件根目录public文件夹下面的公共js封装的函数代码 -->
+    <script src="/admin/js/common.js"></script>
+    <script>
+      // 监听表单提交事件，并且获取提交的数据，对数据进行验证，并且阻止表单提交的默认行为
+      $('#form').on('submit',function(){
+        // 引入自己封装的函数，用来处理 Jquery的serializeArray()获取表单提交数据的方法
+        let result=serializeArrayToJson($(this))
+        // console.log(result)
+        // 验证用户提交的数据
+        if(result.email.trim().length===0){
+          alert('请输入邮件地址')
+          // 阻止程序向下执行，并且阻止表单默认提交行为，注意：必须写false，要不然程序不会阻止表单的默认提交行为
+          return false;
+        }
+        if(result.password.trim().length===0){
+          alert('请输入密码')
+          // 阻止程序向下执行，并且阻止表单默认提交行为，注意：必须写false，要不然程序不会阻止表单的默认提交行为
+          return false;
+        }
+      })
+    </script>
+</body>
+
+</html>

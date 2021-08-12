@@ -1,0 +1,9 @@
+{
+  "title":"开发环境中的title",
+  "db":{
+    "user":"ning",
+    "host":"localhost",
+    "port":"27017",
+    "name":"blog"
+  }
+}
